@@ -1,0 +1,126 @@
+{
+    "RDFa content": {
+        "input": {
+            "@id": "http://article-type.lod.istex.fr/=/research-article",
+            "@context": {
+                "c2": {
+                    "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                    "@label": "Libellé anglais",
+                    "@language": "en"
+                },
+                "c3": {
+                    "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                    "@label": "Libellé français",
+                    "@language": "fr"
+                },
+                "c4": {
+                    "@id": "http://www.w3.org/2004/02/skos/core#definition",
+                    "@label": "Définition anglais",
+                    "@language": "en"
+                },
+                "c5": {
+                    "@id": "http://www.w3.org/2004/02/skos/core#definition",
+                    "@label": "Définition en français",
+                    "@language": "fr"
+                },
+                "_wid": {
+                    "@id": "http://purl.org/dc/elements/1.1/identifier",
+                    "@label": "Identifiant",
+                    "@language": null
+                }
+            },
+            "c2": "research article",
+            "c3": "papier de recherche",
+            "c4": "Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)",
+            "c5": "Article relatif à une recherche initiale",
+            "_wid": "research-article"
+        },
+        "stylesheet": {
+            "content": "http://www.w3.org/2004/02/skos/core#definition"
+        },
+        "expected": {
+            "uri": "http://www.w3.org/2004/02/skos/core#definition",
+            "content": "Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)"
+        }
+    },
+    "RDFa style": {
+        "input": {
+            "tag": "p"
+        },
+        "stylesheet": {
+            "style": {
+                "font-weight": "bold"
+            }
+        },
+        "expected": {
+            "tag": "p",
+            "style": "font-weight: bold"
+        }
+    },
+    "RDFa style #2": {
+        "input": {
+            "tag": "p"
+        },
+        "stylesheet": {
+            "style": {
+                "font-weight": "bold",
+                "margin-top": 0
+            }
+        },
+        "expected": {
+            "tag": "p",
+            "style": "font-weight: bold; margin-top: 0"
+        }
+    },
+    "RDFa class": {
+        "input": {
+            "tag": "div"
+        },
+        "stylesheet": {
+            "class": "figure"
+        },
+        "expected": {
+            "tag": "div",
+            "class": "figure"
+        }
+    },
+    "RDFa class #2": {
+        "input": {
+            "tag": "div"
+        },
+        "stylesheet": {
+            "class": ["figure", "centered"]
+        },
+        "expected": {
+            "tag": "div",
+            "class": "figure centered"
+        }
+    },
+    "RDFa tag": {
+        "input": {
+            "content": "Any string value"
+        },
+        "stylesheet": {
+            "tag": "name"
+        },
+        "expected": {
+            "content": "Any string value",
+            "tag": "name"
+        }
+    },
+    "RDFa toHtml": {
+        "input": {
+            "uri": "http://www.w3.org/2004/02/skos/core#definition",
+            "content": "Any string value",
+            "style": {
+                "font-weight": "bold"
+            },
+            "class": ["show", "center"],
+            "tag": "menu"
+        },
+        "stylesheet": {
+            "toHtml": true
+        },
+        "expected": "<menu property=\"http://www.w3.org/2004/02/skos/core#definition\" style=\"font-weight: bold\" class=\"show center\">Any string value</menu>"
+    }
+}
