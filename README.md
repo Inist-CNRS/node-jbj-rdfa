@@ -91,7 +91,7 @@ Stylesheet:
 Output:
 ```json
 {
-    "uri": "http://www.w3.org/2004/02/skos/core#definition"
+    "uri": "http://www.w3.org/2004/02/skos/core#definition",
     "content": "Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)"
 }
 ```
@@ -122,9 +122,7 @@ Output:
 ```json
 {
     "tag": "p",
-    "style": {
-        "font-weight: bold"
-    }
+    "style": "font-weight: bold"
 }
 ```
 
