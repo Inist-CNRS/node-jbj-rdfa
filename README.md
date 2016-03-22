@@ -149,7 +149,7 @@ Output:
 ```json
 {
     "tag": "div",
-    "class": ["figure"]
+    "classes": "figure"
 }
 ```
 

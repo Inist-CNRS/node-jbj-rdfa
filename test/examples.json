@@ -81,7 +81,7 @@
         },
         "expected": {
             "tag": "div",
-            "class": "figure"
+            "classes": "figure"
         }
     },
     "RDFa class #2": {
@@ -93,7 +93,7 @@
         },
         "expected": {
             "tag": "div",
-            "class": "figure centered"
+            "classes": "figure centered"
         }
     },
     "RDFa tag": {
@@ -112,10 +112,8 @@
         "input": {
             "uri": "http://www.w3.org/2004/02/skos/core#definition",
             "content": "Any string value",
-            "style": {
-                "font-weight": "bold"
-            },
-            "class": ["show", "center"],
+            "style": "font-weight: bold",
+            "classes": "show center",
             "tag": "menu"
         },
         "stylesheet": {

@@ -37,5 +37,8 @@
     "eslint": "~2.2.0",
     "jbj": "^4.1.1",
     "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "clone": "^1.0.2"
   }
 }
