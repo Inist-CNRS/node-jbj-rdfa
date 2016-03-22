@@ -9,25 +9,33 @@ module.exports = function rdfa(exec, execmap) {
    * and declared in the @content part of the JSON-LD
    *
    * @param  {Object}   input
-   * @param  {String}   arg   URI of the field
+   * @param  {String}   arg   URI of the field, or [URI, lang]
    * @param  {function} next  callback(err,res) to trigger next action in
    *                          stylesheet
    */
   filters.getJsonLdField = (input, arg, next) => {
     exec(arg, arg => {
+      const uri     = Array.isArray(arg) ? arg[0] : arg;
+      const lang    = Array.isArray(arg) ? arg[1] : null;
       const context = input["@context"];
       let   fieldName;
       for (let _fieldName in context) {
-        if (context[_fieldName]["@id"] === arg) {
-          fieldName = _fieldName;
-          break;
+        if (context[_fieldName]["@id"] === uri) {
+          if (!lang) {
+            fieldName = _fieldName;
+            break;
+          }
+          if (context[_fieldName]["@language"] === lang) {
+            fieldName = _fieldName;
+            break;
+          }
         }
       }
       if (!fieldName) {
         return next(new Error("URI not found"));
       }
       const res = {
-        uri:arg,
+        uri:uri,
         content:input[fieldName]
       }
       return next(null, res);

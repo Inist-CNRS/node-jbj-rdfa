@@ -41,7 +41,7 @@ $ npm test
 Once the module is declared as used for JBJ, you can use the following actions:
 
 <a id="getJsonLdField"></a>
-### getJsonLdField: URI
+### getJsonLdField: URI | [URI, language]
 
 Get the value of the field which URI is given in parameter, and declared in the
 `@content` part of the JSON-LD.
@@ -95,6 +95,46 @@ Output:
 }
 ```
 
+When the `language` is given, only the matching value will be returned.
+
+Input:
+```json
+{
+    "@id": "http://article-type.lod.istex.fr/=/research-article",
+    "@context": {
+        "c2": {
+            "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+            "@label": "Libellé anglais",
+            "@language": "en"
+        },
+        "c3": {
+            "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+            "@label": "Libellé français",
+            "@language": "fr"
+        }
+    },
+    "c2": "research article",
+    "c3": "papier de recherche"
+}
+```
+
+Stylesheet:
+```json
+{
+    "getJsonLdField": [
+        "http://www.w3.org/2008/05/skos-xl#prefLabel",
+        "fr"
+    ]
+}
+```
+
+Output:
+```json
+{
+    "uri": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+    "content": "papier de recherche"
+}
+```
 
 <a id="style"></a>
 ### style: CSS
