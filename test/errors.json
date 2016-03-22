@@ -1,0 +1,29 @@
+{
+
+    "RDFa getJsonLdField": {
+        "input": {
+            "@id": "http://article-type.lod.istex.fr/=/research-article",
+            "@context": {
+                "c2": {
+                    "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                    "@label": "Libellé anglais",
+                    "@language": "en"
+                },
+                "c3": {
+                    "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                    "@label": "Libellé français",
+                    "@language": "fr"
+                }
+            },
+            "c2": "research article",
+            "c3": "papier de recherche"
+        },
+        "stylesheet": {
+            "getJsonLdField": [
+                "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                "de"
+            ]
+        },
+        "expected": "URI not found"
+    }
+}
