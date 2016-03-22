@@ -1,5 +1,9 @@
 # JBJ RDFa module
 
+[![bitHound Overall Score](https://www.bithound.io/github/Inist-CNRS/node-jbj-rdfa/badges/score.svg)](https://www.bithound.io/github/Inist-CNRS/node-jbj-rdfa)
+[![Travis-CI](https://img.shields.io/travis/Inist-CNRS/node-jbj-rdfa.svg "Travis-CI")](https://travis-ci.org/Inist-CNRS/node-jbj-rdfa)
+[![Code Coverage](https://img.shields.io/codecov/c/github/Inist-CNRS/node-jbj-rdfa.svg "Code Coverage")](https://codecov.io/github/Inist-CNRS/node-jbj-rdfa)
+
 JBJ RDFa is a [JBJ](https://github.com/Inist-CNRS/node-jbj) module 
 to generate [HTML + RDFa](https://www.w3.org/TR/xhtml-rdfa-primer/) 
 from a [JSON-LD](http://json-ld.org/).
