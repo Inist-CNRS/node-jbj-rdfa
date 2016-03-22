@@ -40,8 +40,8 @@ $ npm test
 
 Once the module is declared as used for JBJ, you can use the following actions:
 
-<a id="content"></a>
-### content: URI
+<a id="getJsonLdField"></a>
+### getJsonLdField: URI
 
 Get the value of the field which URI is given in parameter, and declared in the
 `@content` part of the JSON-LD.
@@ -83,7 +83,7 @@ Input:
 Stylesheet:
 ```json
 {
-    "content": "http://www.w3.org/2004/02/skos/core#definition"
+    "getJsonLdField": "http://www.w3.org/2004/02/skos/core#definition"
 }
 ```
 

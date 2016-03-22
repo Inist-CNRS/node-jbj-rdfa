@@ -13,7 +13,7 @@ module.exports = function rdfa(exec, execmap) {
    * @param  {function} next  callback(err,res) to trigger next action in
    *                          stylesheet
    */
-  filters.content = (input, arg, next) => {
+  filters.getJsonLdField = (input, arg, next) => {
     exec(arg, arg => {
       const context = input["@context"];
       let   fieldName;
@@ -31,7 +31,7 @@ module.exports = function rdfa(exec, execmap) {
         content:input[fieldName]
       }
       return next(null, res);
-    }, "content");
+    }, "getJsonLdField");
   }
 
   /**

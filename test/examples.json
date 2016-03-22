@@ -36,7 +36,7 @@
             "_wid": "research-article"
         },
         "stylesheet": {
-            "content": "http://www.w3.org/2004/02/skos/core#definition"
+            "getJsonLdField": "http://www.w3.org/2004/02/skos/core#definition"
         },
         "expected": {
             "uri": "http://www.w3.org/2004/02/skos/core#definition",
