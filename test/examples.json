@@ -5,27 +5,22 @@
             "@context": {
                 "c2": {
                     "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
-                    "@label": "Libellé anglais",
                     "@language": "en"
                 },
                 "c3": {
                     "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
-                    "@label": "Libellé français",
                     "@language": "fr"
                 },
                 "c4": {
                     "@id": "http://www.w3.org/2004/02/skos/core#definition",
-                    "@label": "Définition anglais",
                     "@language": "en"
                 },
                 "c5": {
                     "@id": "http://www.w3.org/2004/02/skos/core#definition",
-                    "@label": "Définition en français",
                     "@language": "fr"
                 },
                 "_wid": {
                     "@id": "http://purl.org/dc/elements/1.1/identifier",
-                    "@label": "Identifiant",
                     "@language": null
                 }
             },
