@@ -4,6 +4,17 @@ const clone = require('clone');
 module.exports = function rdfa(exec, execmap) {
   const filters = {};
 
+  const htmlToString = function() {
+    const {content="", tag="span", style="", classes="", uri} = this;
+    // let res = `<${tag} property="${uri}" style="${style}" class="${classes}">${content}</${tag}>`;
+    let res = `<${tag}` +
+            (uri     ? ` property="${uri}"`  : '') +
+            (style   ? ` style="${style}"`   : '') +
+            (classes ? ` class="${classes}"` : '') +
+            `>${content}</${tag}>`;
+    return res;
+  }
+
   /**
    * Get the value of the field which URI is given in parameter,
    * and declared in the @content part of the JSON-LD
@@ -38,6 +49,7 @@ module.exports = function rdfa(exec, execmap) {
         uri:uri,
         content:input[fieldName]
       }
+      Object.defineProperty(res, 'toString', { value: htmlToString, enumerable: false });
       return next(null, res);
     }, "getJsonLdField");
   }
@@ -59,6 +71,7 @@ module.exports = function rdfa(exec, execmap) {
       style = Object.keys(arg)
         .map(property => property + ": " + arg[property]);
       res.style = style.join('; ');
+      Object.defineProperty(res, 'toString', { value: htmlToString, enumerable: false });
       return next(null, res);
     }, "style");
   }
@@ -80,6 +93,7 @@ module.exports = function rdfa(exec, execmap) {
       else {
         res.classes = arg;
       }
+      Object.defineProperty(res, 'toString', { value: htmlToString, enumerable: false });
       return next(null, res);
     }, "class");
   }
@@ -96,6 +110,7 @@ module.exports = function rdfa(exec, execmap) {
     exec(arg, arg => {
       const res = clone(input);
       res.tag = arg;
+      Object.defineProperty(res, 'toString', { value: htmlToString, enumerable: false });
       return next(null, res);
     }, "tag");
   }
@@ -116,9 +131,10 @@ module.exports = function rdfa(exec, execmap) {
    */
   filters.toHtml = (input, arg, next) => {
     exec(arg, arg => {
-      const {content="", tag="span", style="", classes="", uri} = input;
-      let res = `<${tag} property="${uri}" style="${style}" class="${classes}">${content}</${tag}>`;
-      return next(null, res);
+      // const {content="", tag="span", style="", classes="", uri} = input;
+      // let res = `<${tag} property="${uri}" style="${style}" class="${classes}">${content}</${tag}>`;
+      // return next(null, res);
+      return next(null, htmlToString.apply(input));
     }, "toHtml");
   }
 

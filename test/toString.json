@@ -1,0 +1,127 @@
+{
+    "getJsonLdField toString": {
+        "input": {
+            "@id": "http://article-type.lod.istex.fr/=/research-article",
+            "@context": {
+                "c2": {
+                    "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                    "@language": "en"
+                },
+                "c3": {
+                    "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                    "@language": "fr"
+                },
+                "c4": {
+                    "@id": "http://www.w3.org/2004/02/skos/core#definition",
+                    "@language": "en"
+                },
+                "c5": {
+                    "@id": "http://www.w3.org/2004/02/skos/core#definition",
+                    "@language": "fr"
+                },
+                "_wid": {
+                    "@id": "http://purl.org/dc/elements/1.1/identifier",
+                    "@language": null
+                }
+            },
+            "c2": "research article",
+            "c3": "papier de recherche",
+            "c4": "Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)",
+            "c5": "Article relatif à une recherche initiale",
+            "_wid": "research-article"
+        },
+        "stylesheet": {
+            "getJsonLdField": "http://www.w3.org/2004/02/skos/core#definition"
+        },
+        "expected": "<span property=\"http://www.w3.org/2004/02/skos/core#definition\">Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)</span>"
+    },
+    "getJsonLdField toString #2": {
+        "input": {
+            "@id": "http://article-type.lod.istex.fr/=/research-article",
+            "@context": {
+                "c2": {
+                    "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                    "@label": "Libellé anglais",
+                    "@language": "en"
+                },
+                "c3": {
+                    "@id": "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                    "@label": "Libellé français",
+                    "@language": "fr"
+                }
+            },
+            "c2": "research article",
+            "c3": "papier de recherche"
+        },
+        "stylesheet": {
+            "getJsonLdField": [
+                "http://www.w3.org/2008/05/skos-xl#prefLabel",
+                "fr"
+            ]
+        },
+        "expected": "<span property=\"http://www.w3.org/2008/05/skos-xl#prefLabel\">papier de recherche</span>"
+    },
+    "style toString": {
+        "input": {
+            "tag": "p"
+        },
+        "stylesheet": {
+            "style": {
+                "font-weight": "bold"
+            }
+        },
+        "expected": "<p style=\"font-weight: bold\"></p>"
+    },
+    "style toString #2": {
+        "input": {
+            "tag": "p"
+        },
+        "stylesheet": {
+            "style": {
+                "font-weight": "bold",
+                "margin-top": 0
+            }
+        },
+        "expected": "<p style=\"font-weight: bold; margin-top: 0\"></p>"
+    },
+    "class toString": {
+        "input": {
+            "tag": "div"
+        },
+        "stylesheet": {
+            "class": "figure"
+        },
+        "expected": "<div class=\"figure\"></div>"
+    },
+    "class toString #2": {
+        "input": {
+            "tag": "div"
+        },
+        "stylesheet": {
+            "class": ["figure", "centered"]
+        },
+        "expected": "<div class=\"figure centered\"></div>"
+    },
+    "tag toString": {
+        "input": {
+            "content": "Any string value"
+        },
+        "stylesheet": {
+            "tag": "name"
+        },
+        "expected": "<name>Any string value</name>"
+    },
+    "toHtml/toString": {
+        "input": {
+            "uri": "http://www.w3.org/2004/02/skos/core#definition",
+            "content": "Any string value",
+            "style": "font-weight: bold",
+            "classes": "show center",
+            "tag": "menu"
+        },
+        "stylesheet": {
+            "toHtml": true
+        },
+        "expected": "<menu property=\"http://www.w3.org/2004/02/skos/core#definition\" style=\"font-weight: bold\" class=\"show center\">Any string value</menu>"
+    }
+}
