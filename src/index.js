@@ -6,7 +6,6 @@ module.exports = function rdfa(exec, execmap) {
 
   const htmlToString = function() {
     const {content="", tag="span", style="", classes="", uri} = this;
-    // let res = `<${tag} property="${uri}" style="${style}" class="${classes}">${content}</${tag}>`;
     let res = `<${tag}` +
             (uri     ? ` property="${uri}"`  : '') +
             (style   ? ` style="${style}"`   : '') +
@@ -131,9 +130,6 @@ module.exports = function rdfa(exec, execmap) {
    */
   filters.toHtml = (input, arg, next) => {
     exec(arg, arg => {
-      // const {content="", tag="span", style="", classes="", uri} = input;
-      // let res = `<${tag} property="${uri}" style="${style}" class="${classes}">${content}</${tag}>`;
-      // return next(null, res);
       return next(null, htmlToString.apply(input));
     }, "toHtml");
   }
