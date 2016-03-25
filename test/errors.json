@@ -1,5 +1,4 @@
 {
-
     "RDFa getJsonLdField": {
         "input": {
             "@id": "http://article-type.lod.istex.fr/=/research-article",
@@ -25,5 +24,23 @@
             ]
         },
         "expected": "URI not found"
+    },
+    "skip": {
+        "RDFa style input not an object": {
+            "input": 12,
+            "stylesheet": {
+                "style": {
+                    "color": "red"
+                }
+            },
+            "expected": "Don't know"
+        },
+        "RDFa style without args": {
+            "input": {},
+            "stylesheet": {
+                "style": null
+            },
+            "expected": "Don't know"
+        }
     }
 }

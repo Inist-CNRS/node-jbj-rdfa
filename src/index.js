@@ -5,11 +5,12 @@ module.exports = function rdfa(exec, execmap) {
   const filters = {};
 
   const htmlToString = function() {
-    const {content="", tag="span", style="", classes="", uri} = this;
+    const {content="", tag="span", language="", style="", classes="", uri} = this;
     let res = `<${tag}` +
-            (uri     ? ` property="${uri}"`  : '') +
-            (style   ? ` style="${style}"`   : '') +
-            (classes ? ` class="${classes}"` : '') +
+            (uri      ? ` property="${uri}"`  : '') +
+            (language ? ` lang="${language}"` : '') +
+            (style    ? ` style="${style}"`   : '') +
+            (classes  ? ` class="${classes}"` : '') +
             `>${content}</${tag}>`;
     return res;
   }
@@ -26,13 +27,14 @@ module.exports = function rdfa(exec, execmap) {
   filters.getJsonLdField = (input, arg, next) => {
     exec(arg, arg => {
       const uri     = Array.isArray(arg) ? arg[0] : arg;
-      const lang    = Array.isArray(arg) ? arg[1] : null;
+      let   lang    = Array.isArray(arg) ? arg[1] : null;
       const context = input["@context"];
       let   fieldName;
       for (let _fieldName in context) {
         if (context[_fieldName]["@id"] === uri) {
           if (!lang) {
             fieldName = _fieldName;
+            lang      = context[_fieldName]["@language"];
             break;
           }
           if (context[_fieldName]["@language"] === lang) {
@@ -47,6 +49,9 @@ module.exports = function rdfa(exec, execmap) {
       const res = {
         uri:uri,
         content:input[fieldName]
+      }
+      if (lang) {
+        res.language = lang;
       }
       Object.defineProperty(res, 'toString', { value: htmlToString, enumerable: false });
       return next(null, res);

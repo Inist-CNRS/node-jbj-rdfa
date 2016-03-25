@@ -33,7 +33,7 @@
         "stylesheet": {
             "getJsonLdField": "http://www.w3.org/2004/02/skos/core#definition"
         },
-        "expected": "<span property=\"http://www.w3.org/2004/02/skos/core#definition\">Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)</span>"
+        "expected": "<span property=\"http://www.w3.org/2004/02/skos/core#definition\" lang=\"en\">Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)</span>"
     },
     "getJsonLdField toString #2": {
         "input": {
@@ -59,7 +59,22 @@
                 "fr"
             ]
         },
-        "expected": "<span property=\"http://www.w3.org/2008/05/skos-xl#prefLabel\">papier de recherche</span>"
+        "expected": "<span property=\"http://www.w3.org/2008/05/skos-xl#prefLabel\" lang=\"fr\">papier de recherche</span>"
+    },
+    "getJsonLdField toString #3": {
+        "input": {
+            "@id": "http://article-type.lod.istex.fr/=/research-article",
+            "@context": {
+                "_wid": {
+                    "@id": "http://purl.org/dc/elements/1.1/identifier"
+                }
+            },
+            "_wid": "research-article"
+        },
+        "stylesheet": {
+            "getJsonLdField": "http://purl.org/dc/elements/1.1/identifier"
+        },
+        "expected": "<span property=\"http://purl.org/dc/elements/1.1/identifier\">research-article</span>"
     },
     "style toString": {
         "input": {

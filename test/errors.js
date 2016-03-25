@@ -9,7 +9,9 @@ JBJ.use(require('../src/'));
 
 
 describe('RDFa errors', function () {
-  Object.keys(examples).forEach(function (example) {
+  Object.keys(examples)
+  .filter(function (name) { return name !== 'skip'})
+  .forEach(function (example) {
     it(example, function (done) {
       var input      = examples[example].input;
       var stylesheet = examples[example].stylesheet;

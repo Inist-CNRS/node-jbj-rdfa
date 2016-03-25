@@ -35,7 +35,8 @@
         },
         "expected": {
             "uri": "http://www.w3.org/2004/02/skos/core#definition",
-            "content": "Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)"
+            "content": "Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)",
+            "language": "en"
         }
     },
     "RDFa getJsonLdField #2": {
@@ -64,7 +65,8 @@
         },
         "expected": {
             "uri": "http://www.w3.org/2008/05/skos-xl#prefLabel",
-            "content": "papier de recherche"
+            "content": "papier de recherche",
+            "language": "fr"
         }
     },
     "RDFa style": {
@@ -144,5 +146,19 @@
             "toHtml": true
         },
         "expected": "<menu property=\"http://www.w3.org/2004/02/skos/core#definition\" style=\"font-weight: bold\" class=\"show center\">Any string value</menu>"
+    },
+    "RDFa toHtml #2": {
+        "input": {
+            "uri": "http://www.w3.org/2004/02/skos/core#definition",
+            "content": "Any string value",
+            "language": "en",
+            "style": "font-weight: bold",
+            "classes": "show center",
+            "tag": "menu"
+        },
+        "stylesheet": {
+            "toHtml": true
+        },
+        "expected": "<menu property=\"http://www.w3.org/2004/02/skos/core#definition\" lang=\"en\" style=\"font-weight: bold\" class=\"show center\">Any string value</menu>"
     }
 }
