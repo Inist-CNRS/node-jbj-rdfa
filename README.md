@@ -27,6 +27,25 @@ var JBJ = require('jbj');
 JBJ.use(require('jbj-rdfa'));
 ```
 
+But, the first aim of this JBJ module is to be used as a template engine
+filter:
+
+```html
+<li>Label: {{_content.jsonld|getJsonLdField(["http://www.w3.org/2004/02/skos/core#prefLabel","fr"])}}</li>
+```
+
+In the above example, a template variable `_content`, containing a `jsonld`
+key, pointing to a JSON-LD object, can be filtered using the JBJ actions
+`getJsonLdField`, here.
+
+You can pipe several JBJ filters: `{{_content.jsonld | getJsonLdField(["http://www.w3.org/2004/02/skos/core#prefLabel", "fr"]) | style({"color": "red"}) | class("label") | tag("p")}}` which should give, using [nunjucks](http://mozilla.github.io/nunjucks/) or [ejs](http://www.embeddedjs.com/):
+
+```html
+<p property="http://www.w3.org/2004/02/skos/core#prefLabel" lang="fr" style="color: red" class="label">Le libellé préférentiel en question</p>
+```
+
+You can see a complete example in the [LODEX project](https://github.com/Inist-CNRS/lodex/blob/26c3d676f274056f05246fd38753cba6ffbe2b77/views/item.html#L18-L20).
+
 ## Tests
 
 Use [mocha](https://github.com/visionmedia/mocha) to run the tests.
@@ -91,7 +110,8 @@ Output:
 ```json
 {
     "uri": "http://www.w3.org/2004/02/skos/core#definition",
-    "content": "Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)"
+    "content": "Article reporting on primary research (The related value “review-article” describes a literature review, research summary, or state-of-the-art article.)",
+    "language": "en"
 }
 ```
 
@@ -132,7 +152,8 @@ Output:
 ```json
 {
     "uri": "http://www.w3.org/2008/05/skos-xl#prefLabel",
-    "content": "papier de recherche"
+    "content": "papier de recherche",
+    "language": "fr"
 }
 ```
 
@@ -223,13 +244,14 @@ Output:
 ### toHtml
 
 Serializes the input to HTML+RDFa.
-Used keys: `uri`, `content`, `style`, and `tag`.
+Used keys: `uri`, `content`, `language`, `style`, and `tag`.
 
 Input:
 ```json
 {
     "uri": "http://www.w3.org/2004/02/skos/core#definition",
     "content": "Any string value",
+    "language": "en",
     "style": {
         "font-weight": "bold"
     },
@@ -247,7 +269,7 @@ Stylesheet:
 
 Output:
 ```json
-"<menu property=\"http://www.w3.org/2004/02/skos/core#definition\" style=\"font-weight: bold\" class=\"show center\">Any string value</menu>"
+"<menu property=\"http://www.w3.org/2004/02/skos/core#definition\" lang=\"en\" style=\"font-weight: bold\" class=\"show center\">Any string value</menu>"
 ```
 
 
