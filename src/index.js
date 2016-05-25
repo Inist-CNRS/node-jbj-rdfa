@@ -44,7 +44,7 @@ module.exports = function rdfa(exec, execmap) {
         }
       }
       if (!fieldName) {
-        return next(new Error("URI not found"));
+        return next(undefined);
       }
       const res = {
         uri:uri,
