@@ -118,9 +118,24 @@
                 "http://www.w3.org/2008/05/skos-xl#prefLabel",
                 "de"
             ],
-			"append": "!"
+            "append": "!"
         },
         "expected": "null!"
+    },
+    "RDFa getJsonLdField #5": {
+        "input": null,
+        "stylesheet": {
+            "getJsonLdField": "http://www.w3.org/2008/05/skos-xl#prefLabel"
+        },
+        "expected": null
+    },
+    "RDFa getJsonLdField #6": {
+        "input": null,
+        "stylesheet": {
+            "getJsonLdField": "uri",
+            "expect": { "success": true }
+        },
+        "expected": { "success": true }
     },
     "RDFa style": {
         "input": {

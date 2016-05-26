@@ -26,6 +26,9 @@ module.exports = function rdfa(exec, execmap) {
    */
   filters.getJsonLdField = (input, arg, next) => {
     exec(arg, arg => {
+      if (!input) {
+        return next(null, null);
+      }
       const uri     = Array.isArray(arg) ? arg[0] : arg;
       let   lang    = Array.isArray(arg) ? arg[1] : null;
       const context = input["@context"];
